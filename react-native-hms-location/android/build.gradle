@@ -1,3 +1,6 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
 buildscript {
     repositories {
         google()
@@ -10,8 +13,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 29

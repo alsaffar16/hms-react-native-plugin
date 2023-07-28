@@ -1,18 +1,18 @@
 /*
-    Copyright 2020-2022. Huawei Technologies Co., Ltd. All rights reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License")
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        https://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
+ * Copyright 2020-2023. Huawei Technologies Co., Ltd. All rights reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.huawei.hms.rn.ads;
 
@@ -201,8 +201,9 @@ public class HMSAdsVastModule extends ReactContextBaseJavaModule {
                 return "Incorrect type of the asset to be parsed.";
             case AdsRequestListener.ADSLOT_MORE_THAN_CREATIVE:
                 return "The number of returned assets is less than that of ad units.";
+            default:
+                return "Unknown error";
         }
-        return "Unknown error";
     }
 
     public static String getVastPlayStateChangedMessage(int playState) {
@@ -215,8 +216,9 @@ public class HMSAdsVastModule extends ReactContextBaseJavaModule {
                 return "A video ad is being played.";
             case 2007:
                 return "An image ad is being played.";
+            default:
+                return "Unknown Play State";
         }
-        return "Unknown Play State";
     }
 
     public static String getVastScreenStateChangedMessage(int screenState) {
@@ -225,7 +227,8 @@ public class HMSAdsVastModule extends ReactContextBaseJavaModule {
                 return "normal screen mode";
             case 1002:
                 return "full screen mode";
+            default:
+                return "Unknown Screen State";
         }
-        return "Unknown Screen State";
     }
 }

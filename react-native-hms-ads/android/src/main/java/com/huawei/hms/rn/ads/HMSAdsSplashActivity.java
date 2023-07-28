@@ -1,18 +1,18 @@
 /*
-    Copyright 2020-2022. Huawei Technologies Co., Ltd. All rights reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License")
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        https://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
+ * Copyright 2020-2023. Huawei Technologies Co., Ltd. All rights reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.huawei.hms.rn.ads;
 
@@ -144,16 +144,16 @@ public class HMSAdsSplashActivity extends ReactActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         Intent intent = getIntent();
-        mOrientation = CommonUtils.GetIntegerExtra(intent,"orientation", ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        mSloganResId = CommonUtils.GetIntegerExtra(intent, "sloganResId", R.drawable.default_slogan);
-        mLogoResId = CommonUtils.GetIntegerExtra(intent, "logoResId", R.drawable.ic_launcher);
-        mWideSloganResId = CommonUtils.GetIntegerExtra(intent, "wideSloganResId", R.drawable.default_slogan);
-        mMediaNameResId = CommonUtils.GetIntegerExtra(intent, "mediaNameResId", 2131493009);
-        mAudioFocusType = CommonUtils.GetIntegerExtra(intent, "audioFocusType", AudioFocusType.NOT_GAIN_AUDIO_FOCUS_WHEN_MUTE);
-        mLogoText = CommonUtils.GetStringExtra(intent, "logoText");
-        mCopyrightText = CommonUtils.GetStringExtra(intent,"copyrightText");
-        mAdId = CommonUtils.GetStringExtra(intent,"adId");
-        mAdParamBundle = CommonUtils.GetBundleExtra(intent,"adParam");
+        mOrientation = CommonUtils.getIntegerExtra(intent,"orientation", ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        mSloganResId = CommonUtils.getIntegerExtra(intent, "sloganResId", R.drawable.default_slogan);
+        mLogoResId = CommonUtils.getIntegerExtra(intent, "logoResId", R.drawable.ic_launcher);
+        mWideSloganResId = CommonUtils.getIntegerExtra(intent, "wideSloganResId", R.drawable.default_slogan);
+        mMediaNameResId = CommonUtils.getIntegerExtra(intent, "mediaNameResId", 2131493009);
+        mAudioFocusType = CommonUtils.getIntegerExtra(intent, "audioFocusType", AudioFocusType.NOT_GAIN_AUDIO_FOCUS_WHEN_MUTE);
+        mLogoText = CommonUtils.getStringExtra(intent, "logoText");
+        mCopyrightText = CommonUtils.getStringExtra(intent,"copyrightText");
+        mAdId = CommonUtils.getStringExtra(intent,"adId");
+        mAdParamBundle = CommonUtils.getBundleExtra(intent,"adParam");
         loadAd();
     }
 

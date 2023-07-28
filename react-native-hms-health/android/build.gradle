@@ -10,16 +10,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0'
-        classpath 'com.huawei.agconnect:agcp:1.4.2.301'
     }
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 33
+    buildToolsVersion "31.0.0"
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
@@ -45,7 +44,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
     // HMS HEALTH
-    implementation "com.huawei.hms:health:6.0.0.300"
+    implementation "com.huawei.hms:health:6.10.0.301"
     // AGCONNECT
-    implementation "com.huawei.agconnect:agconnect-core:1.4.2.301"
+    implementation "com.huawei.agconnect:agconnect-core:1.7.1.300"
 }

@@ -1,18 +1,18 @@
 /*
-    Copyright 2020-2022. Huawei Technologies Co., Ltd. All rights reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License")
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        https://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
+ * Copyright 2020-2023. Huawei Technologies Co., Ltd. All rights reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.huawei.hms.rn.ads;
 
@@ -45,8 +45,6 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 import com.huawei.hms.ads.AdListener;
-import com.huawei.hms.ads.AdParam;
-import com.huawei.hms.ads.ChoicesView;
 import com.huawei.hms.ads.VideoConfiguration;
 import com.huawei.hms.ads.VideoOperator;
 import com.huawei.hms.ads.nativead.MediaView;
@@ -99,7 +97,7 @@ public class HMSAdsNativeView extends LinearLayout {
 
     private ReadableMap mAdParamReadableMap;
 
-    private String mAdId = "testy63txaom86";
+    private String mAdId;
 
     private NativeMediaType mMediaType = NativeMediaType.VIDEO;
 
@@ -292,8 +290,9 @@ public class HMSAdsNativeView extends LinearLayout {
                 return "Small image with text";
             case 8:
                 return "Three small images with text";
+            default:
+                return "Large image";
         }
-        return "Large image";
     }
 
     private void showNativeAd(NativeAd nativeAd) {
@@ -480,6 +479,14 @@ public class HMSAdsNativeView extends LinearLayout {
         }
     }
 
+    public void showAdvertiserInfoDialog(boolean showWhyThisAd) {
+        mNativeView.showAdvertiserInfoDialog(mNativeView, showWhyThisAd);
+    }
+
+    public void hideAdvertiserInfoDialog() {
+        mNativeView.hideAdvertiserInfoDialog();
+    }
+
     public void recordClickEvent() {
         if (mNativeAd != null) {
             mNativeAd.recordClickEvent();
@@ -540,7 +547,9 @@ public class HMSAdsNativeView extends LinearLayout {
             GO_TO_WHY("gotoWhyThisAdPage"),
             ALLOW_CUSTOM_CLICK("setAllowCustomClick"),
             RECORD_CLICK("recordClickEvent"),
-            RECORD_IMPRESSION("recordImpressionEvent");
+            RECORD_IMPRESSION("recordImpressionEvent"),
+            SHOW_ADVERTISER_INFO_DIALOG("showAdvertiserInfoDialog"),
+            HIDE_ADVERTISER_INFO_DIALOG("hideAdvertiserInfoDialog");
 
             private String nativeCommandName;
 
@@ -618,6 +627,16 @@ public class HMSAdsNativeView extends LinearLayout {
                         hmsLogger.startMethodExecutionTimer("nativeView.recordImpressionEvent");
                         root.recordImpressionEvent(args.getMap(0));
                         hmsLogger.sendSingleEvent("nativeView.recordImpressionEvent");
+                        break;
+                    case SHOW_ADVERTISER_INFO_DIALOG:
+                        hmsLogger.startMethodExecutionTimer("nativeView.showAdvertiserInfoDialog");
+                        root.showAdvertiserInfoDialog(args.getBoolean(0));
+                        hmsLogger.sendSingleEvent("nativeView.showAdvertiserInfoDialog");
+                        break;
+                    case HIDE_ADVERTISER_INFO_DIALOG:
+                        hmsLogger.startMethodExecutionTimer("nativeView.hideAdvertiserInfoDialog");
+                        root.hideAdvertiserInfoDialog();
+                        hmsLogger.sendSingleEvent("nativeView.hideAdvertiserInfoDialog");
                         break;
                     default:
                         break;
